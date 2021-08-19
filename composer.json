@@ -1,0 +1,37 @@
+{
+    "name": "total-studio/t-s-excel",
+    "description": "Excel plugin for CakePHP 4",
+    "type": "cakephp-plugin",
+    "license": "MIT",
+    "keywords": [
+        "cakephp",
+        "excel"
+    ],
+    "homepage": "https://github.com/totalstudio/tsexcel",
+    "authors": [
+        {
+            "name": "Gergely Tamas",
+            "role": "Author"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "cakephp/plugin-installer": "*",
+        "cakephp/cakephp": "^4.2.6",
+        "phpoffice/phpspreadsheet": "^1.18"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5 || ^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "TotalStudio\\TSExcel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TotalStudio\\TSExcel\\Test\\": "tests/",
+            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
+        }
+    }
+}
