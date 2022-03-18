@@ -134,7 +134,7 @@ class ExcelHelper extends Helper
     {
         $rowIndex = isset($options['row']) ? $options['row'] : 1;
         foreach ($array as $row) {
-            $columnIndex = isset($options['column']) ? $options['column'] : 0;
+            $columnIndex = isset($options['column']) ? $options['column'] : 1;
             foreach ($row as $cell) {
                 $this->_addCellData($cell, $columnIndex, $rowIndex);
                 $columnIndex++;
