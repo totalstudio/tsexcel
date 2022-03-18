@@ -68,6 +68,11 @@ class ImportComponent extends Component
         /** convert data for building entities */
         $result = [];
         $properties = array_shift($data); //first row columns are the properties
+        foreach($properties as $propertyCol => $property){
+            if(empty($property)){
+                $properties[$propertyCol] = $propertyCol;
+            }
+        }
 
         foreach ($data as $row) {
             $record = array_combine($properties, $row);
