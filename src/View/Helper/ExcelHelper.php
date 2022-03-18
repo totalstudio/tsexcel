@@ -186,7 +186,8 @@ class ExcelHelper extends Helper
     public function addSheet($title = '')
     {
         $this->view->getSpreadsheet()->createSheet();
-        $this->view->getSpreadsheet()->setActiveSheetIndex(1);
+        $this->view->currentSheetIndex++;
+        $this->view->getSpreadsheet()->setActiveSheetIndex($this->view->currentSheetIndex);
         $this->view->getSpreadsheet()->getActiveSheet()->setTitle($title);
         $this->view->getSpreadsheet()->getProperties()->setTitle($title);
         $this->view->getSpreadsheet()->getProperties()->setSubject($title. ' ' . date('d.m.Y H:i'));
