@@ -2,6 +2,7 @@
 namespace TotalStudio\TSExcel\View\Helper;
 
 use Cake\Collection\Collection;
+use Cake\Core\Configure;
 use Cake\Database\Expression\QueryExpression;
 use Cake\I18n\Date;
 use Cake\I18n\FrozenDate;
@@ -25,6 +26,7 @@ class ExcelHelper extends Helper
      * @var ExcelView $view
      */
     private $view = null;
+    private $dateformat = 'yyyy-MM-dd';
 
     /**
      * Constructor
@@ -35,6 +37,9 @@ class ExcelHelper extends Helper
     public function __construct(View $View, array $config = array())
     {
         parent::__construct($View, $config);
+        if (isset($config['dateformat'])) {
+            $this->dateformat = $config['dateformat'];
+        }
         $this->view = $this->getView();
 
     }
@@ -160,7 +165,7 @@ class ExcelHelper extends Helper
             return;
         }
         if ($cell instanceof Date or $cell instanceof Time or $cell instanceof FrozenDate or $cell instanceof FrozenTime) {
-            $cell = $cell->i18nFormat($this->__dateformat);  // Dates must be converted for Excel
+            $cell = $cell->i18nFormat($this->dateformat);  // Dates must be converted for Excel
             $this->view->getSpreadsheet()->getActiveSheet()->getCellByColumnAndRow($columnIndex, $rowIndex)->setValueExplicit($cell, DataType::TYPE_STRING);
             return;
         }
